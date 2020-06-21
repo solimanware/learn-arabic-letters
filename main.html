@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        /*disable selection*/
         * {
             -webkit-touch-callout: none;
             /* iOS Safari */
@@ -27,96 +28,15 @@
     </style>
 </head>
 
-<body onload="onLoad()" onresize="onResize()">
+<body>
     <div class="container">
         <div class="header">
             <h1>الحروف العربية</h1>
         </div>
-        <div ontouchstart="playAudio('1.mp3');" class="button">
-            <h1>أ</h1>
-        </div>
-        <div ontouchstart="playAudio('2.mp3');" class="button">
-            <h1>ب</h1>
-        </div>
-        <div ontouchstart="playAudio('3.mp3');" class="button">
-            <h1>ت</h1>
-        </div>
-        <div ontouchstart="playAudio('4.mp3');" class="button">
-            <h1>ث</h1>
-        </div>
-        <div ontouchstart="playAudio('5.mp3');" class="button">
-            <h1>ج</h1>
-        </div>
-        <div ontouchstart="playAudio('6.mp3');" class="button">
-            <h1>ح</h1>
-        </div>
-        <div ontouchstart="playAudio('7.mp3');" class="button">
-            <h1>خ</h1>
-        </div>
-        <div ontouchstart="playAudio('8.mp3');" class="button">
-            <h1>د</h1>
-        </div>
-        <div ontouchstart="playAudio('9.mp3');" class="button">
-            <h1>ذ</h1>
-        </div>
-        <div ontouchstart="playAudio('10.mp3');" class="button">
-            <h1>ر</h1>
-        </div>
-        <div ontouchstart="playAudio('11.mp3');" class="button">
-            <h1>ز</h1>
-        </div>
-        <div ontouchstart="playAudio('12.mp3');" class="button">
-            <h1>س</h1>
-        </div>
-        <div ontouchstart="playAudio('13.mp3');" class="button">
-            <h1>ش</h1>
-        </div>
-        <div ontouchstart="playAudio('14.mp3');" class="button">
-            <h1>ص</h1>
-        </div>
-        <div ontouchstart="playAudio('15.mp3');" class="button">
-            <h1>ض</h1>
-        </div>
-        <div ontouchstart="playAudio('16.mp3');" class="button">
-            <h1>ط</h1>
-        </div>
-        <div ontouchstart="playAudio('17.mp3');" class="button">
-            <h1>ظ</h1>
-        </div>
-        <div ontouchstart="playAudio('18.mp3');" class="button">
-            <h1>ع</h1>
-        </div>
-        <div ontouchstart="playAudio('19.mp3');" class="button">
-            <h1>غ</h1>
-        </div>
-        <div ontouchstart="playAudio('20.mp3');" class="button">
-            <h1>ف</h1>
-        </div>
-        <div ontouchstart="playAudio('21.mp3');" class="button">
-            <h1>ق</h1>
-        </div>
-        <div ontouchstart="playAudio('22.mp3');" class="button">
-            <h1>ك</h1>
-        </div>
-        <div ontouchstart="playAudio('23.mp3');" class="button">
-            <h1>ل</h1>
-        </div>
-        <div ontouchstart="playAudio('24.mp3');" class="button">
-            <h1>م</h1>
-        </div>
-        <div ontouchstart="playAudio('25.mp3');" class="button">
-            <h1>ن</h1>
-        </div>
-        <div ontouchstart="playAudio('26.mp3');" class="button">
-            <h1>هـ</h1>
-        </div>
-        <div ontouchstart="playAudio('27.mp3');" class="button">
-            <h1>و</h1>
-        </div>
-        <div ontouchstart="playAudio('28.mp3');" class="button">
-            <h1>ي</h1>
+        <div id="buttons">
 
         </div>
+
     </div>
     <script>
         function playAudio(file) {
@@ -124,6 +44,17 @@
             var audio = new Audio(file);
             audio.play();
         }
+        const letters = ['ا', 'ب', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ی'];
+        buttonsElements = [];
+        let counter = 1;
+        for (let letter of letters) {
+            const element = `<div onClick="playAudio('${counter}.mp3')" class="button"><h1>${letter}</h1></div>`
+            buttonsElements.push(element)
+            counter++;
+        }
+        console.log(buttonsElements);
+        var buttonsEl = document.getElementById("buttons");
+        buttonsEl.innerHTML = buttonsElements.join(' ');
     </script>
 </body>
 

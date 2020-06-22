@@ -48,7 +48,7 @@
         buttonsElements = [];
         let counter = 1;
         for (let letter of letters) {
-            const element = `<div onClick="playAudio('${counter}.mp3')" class="button"><h1>${letter}</h1></div>`
+            const element = `<div onClick="playAudio('assets/${counter}.mp3')" class="button"><h1>${letter}</h1></div>`
             buttonsElements.push(element)
             counter++;
         }
